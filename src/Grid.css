@@ -1,5 +1,11 @@
 .Grid {
-  border: 2px solid #d5ff80;
   display: grid;
-  margin: auto;
+  grid-template-columns: 60px 60px 60px;
+}
+
+@media (min-width: 420px) {
+  .Grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+  }
 }

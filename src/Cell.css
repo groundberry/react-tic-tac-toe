@@ -1,0 +1,15 @@
+.Cell {
+  border: 2px solid #d5ff80;
+  box-sizing: border-box;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 420px) {
+  .Cell {
+    font-size: 1.5em;
+    height: 100px;
+  }
+}
