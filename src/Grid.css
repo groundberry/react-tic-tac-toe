@@ -1,10 +1,10 @@
-.Grid {
+.Grid-game {
   display: grid;
   grid-template-columns: 60px 60px 60px;
 }
 
 @media (min-width: 420px) {
-  .Grid {
+  .Grid-game {
     display: grid;
     grid-template-columns: 100px 100px 100px;
   }

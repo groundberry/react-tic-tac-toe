@@ -1,0 +1,18 @@
+.Options-button {
+  background-color: #222;
+  border-color: #d5ff80;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: medium;
+  color: #d5ff80;
+  font-size: 1.25em;
+  height: 40px;
+  margin: 0 5px;
+  width: 40px;
+}
+
+.Options-button:hover {
+  background-color: #d5ff80;
+  color: #222;
+  cursor: pointer;
+}

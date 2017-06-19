@@ -4,7 +4,7 @@ import Grid from './Grid';
 
 describe('<Grid />', () => {
   it('renders a grid', () => {
-    const wrapper = shallow(<Grid />);
+    const wrapper = shallow(<Grid player={'X'} />);
     expect(wrapper.hasClass('Grid')).toBe(true);
   });
 });
