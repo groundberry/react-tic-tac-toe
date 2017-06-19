@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Grid from './Grid';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <h2>Tic Tac Toe</h2>
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      grid: [
+        [false, false, false],
+        [false, false, false],
+        [false, false, false],
+      ],
+    };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <h2>Tic Tac Toe</h2>
+          <Grid />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
