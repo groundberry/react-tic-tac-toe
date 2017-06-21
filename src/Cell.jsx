@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Cell.css';
 
-function Cell() {
+function Cell(props) {
   return (
-    <div className="Cell" />
+    <button className="Cell" onClick={props.onClick}>
+    </button>
   );
 }
 
 export default Cell;
+
+Cell.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

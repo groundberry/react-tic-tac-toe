@@ -1,14 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import App from './App';
 import Options from './Options';
 import Grid from './Grid';
 
 describe('<App />', () => {
   let wrapper;
+  let spy;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = mount(<App />);
+    spy = jest.fn();
   });
 
   it('renders a title', () => {

@@ -1,4 +1,5 @@
 .Cell {
+  background-color: #222;
   border: 2px solid #d5ff80;
   box-sizing: border-box;
   height: 60px;

@@ -4,7 +4,8 @@ import Grid from './Grid';
 
 describe('<Grid />', () => {
   it('renders a grid', () => {
-    const wrapper = shallow(<Grid player={'X'} />);
+    const spy = jest.fn();
+    const wrapper = shallow(<Grid player={'X'} onClickCell={spy} />);
     expect(wrapper.hasClass('Grid')).toBe(true);
   });
 });
