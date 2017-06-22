@@ -2,10 +2,16 @@
   background-color: #222;
   border: 2px solid #d5ff80;
   box-sizing: border-box;
+  color: #d5ff80;
   height: 60px;
   display: flex;
+  font-size: 1.25em;
   align-items: center;
   justify-content: center;
+}
+
+.Cell h2 {
+  margin: 0;
 }
 
 @media (min-width: 420px) {

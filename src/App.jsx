@@ -8,11 +8,11 @@ class App extends Component {
     super();
     this.state = {
       grid: [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
+        null, null, null,
+        null, null, null,
+        null, null, null,
       ],
-      userOption: '',
+      userOption: null,
       cellClicked: null,
     };
 
@@ -23,17 +23,20 @@ class App extends Component {
   }
 
   hasChosen() {
-    return (this.state.userOption) !== '';
+    return this.state.userOption != null;
   }
 
   addOption(option) {
     this.setState({
-      userOption: this.state.userOption + option,
+      userOption: option,
     });
   }
 
-  selectCell() {
+  selectCell(index) {
+    const grid = this.state.grid.slice();
+    grid[parseInt(index, 10)] = this.state.userOption;
     this.setState({
+      grid,
       cellClicked: this.state.userOption,
     });
   }
@@ -44,8 +47,15 @@ class App extends Component {
         <div className="App-header">
           <h2>Tic Tac Toe</h2>
           {this.hasChosen()
-            ? <Grid player={this.state.userOption} onClickCell={this.selectCell} />
-            : <Options onClickChooseX={this.chooseX} onClickChooseO={this.chooseO} />
+            ? <Grid
+              player={this.state.userOption}
+              onClickCell={this.selectCell}
+              board={this.state.grid}
+            />
+            : <Options
+              onClickChooseX={this.chooseX}
+              onClickChooseO={this.chooseO}
+            />
           }
         </div>
       </div>

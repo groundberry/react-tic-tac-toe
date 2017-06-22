@@ -6,27 +6,25 @@ import Grid from './Grid';
 
 describe('<App />', () => {
   let wrapper;
-  let spy;
 
   beforeEach(() => {
     wrapper = mount(<App />);
-    spy = jest.fn();
   });
 
   it('renders a title', () => {
     expect(wrapper.hasClass('App')).toBe(true);
   });
 
-  it('has an initial state of userOption: ""', () => {
-    expect(wrapper.state('userOption')).toBe('');
+  it('has an initial state of userOption: null', () => {
+    expect(wrapper.state('userOption')).toBe(null);
   });
 
-  it('renders a options page when the user has not chosen X or O', () => {
-    expect(wrapper.find(Options).length).toEqual(1);
+  it('renders an options page when the user has not chosen X or O', () => {
+    expect(wrapper.find(Options)).toHaveLength(1);
   });
 
   it('renders the game page when the user has chosen X or O', () => {
     wrapper.setState({ userOption: 'X' });
-    expect(wrapper.find(Grid).length).toEqual(1);
+    expect(wrapper.find(Grid)).toHaveLength(1);
   });
 });

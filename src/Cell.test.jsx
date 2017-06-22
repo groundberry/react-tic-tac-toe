@@ -11,6 +11,8 @@ describe('<Cell />', () => {
     wrapper = mount(<Cell
       className="Cell"
       onClick={spy}
+      value="X"
+      index={1}
     />);
   });
 
@@ -18,8 +20,12 @@ describe('<Cell />', () => {
     expect(wrapper.hasClass('Cell')).toBe(true);
   });
 
-  it('invoques the callback when clicked', () => {
+  it('invokes the callback when clicked', () => {
     wrapper.simulate('click');
-    expect(spy).toBeCalled();
+    expect(spy).toBeCalledWith(1);
+  });
+
+  it('renders the value', () => {
+    expect(wrapper.text()).toBe('X');
   });
 });
