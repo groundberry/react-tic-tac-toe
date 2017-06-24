@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Grid from './Grid';
 import Options from './Options';
+import {
+  selectUserOption,
+  selectComputerOption,
+} from './actions';
 import './App.css';
 
 class App extends Component {
@@ -13,12 +17,13 @@ class App extends Component {
         null, null, null,
       ],
       userOption: null,
+      computerOption: null,
       cellClicked: null,
     };
 
-    this.addOption = this.addOption.bind(this);
-    this.chooseX = this.addOption.bind(this, 'X');
-    this.chooseO = this.addOption.bind(this, 'O');
+    this.handleClickSelectUserOption = this.handleClickSelectUserOption.bind(this);
+    this.chooseX = this.handleClickSelectUserOption.bind(this, 'X');
+    this.chooseO = this.handleClickSelectUserOption.bind(this, 'O');
     this.selectCell = this.selectCell.bind(this);
   }
 
@@ -26,10 +31,11 @@ class App extends Component {
     return this.state.userOption != null;
   }
 
-  addOption(option) {
-    this.setState({
-      userOption: option,
-    });
+  handleClickSelectUserOption(option) {
+    this.setState(selectUserOption.bind(null, option));
+    setTimeout(() => {
+      this.setState(selectComputerOption);
+    }, 1000);
   }
 
   selectCell(index) {
