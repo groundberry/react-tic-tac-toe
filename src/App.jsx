@@ -4,6 +4,7 @@ import Options from './Options';
 import {
   selectUserOption,
   selectComputerOption,
+  selectCell,
 } from './actions';
 import './App.css';
 
@@ -18,13 +19,12 @@ class App extends Component {
       ],
       userOption: null,
       computerOption: null,
-      cellClicked: null,
     };
 
     this.handleClickSelectUserOption = this.handleClickSelectUserOption.bind(this);
     this.chooseX = this.handleClickSelectUserOption.bind(this, 'X');
     this.chooseO = this.handleClickSelectUserOption.bind(this, 'O');
-    this.selectCell = this.selectCell.bind(this);
+    this.handleOnClickCell = this.handleOnClickCell.bind(this);
   }
 
   hasChosen() {
@@ -38,13 +38,8 @@ class App extends Component {
     }, 1000);
   }
 
-  selectCell(index) {
-    const grid = this.state.grid.slice();
-    grid[parseInt(index, 10)] = this.state.userOption;
-    this.setState({
-      grid,
-      cellClicked: this.state.userOption,
-    });
+  handleOnClickCell(index) {
+    this.setState(selectCell.bind(null, index));
   }
 
   render() {
@@ -55,7 +50,7 @@ class App extends Component {
           {this.hasChosen()
             ? <Grid
               player={this.state.userOption}
-              onClickCell={this.selectCell}
+              onClickCell={this.handleOnClickCell}
               board={this.state.grid}
             />
             : <Options

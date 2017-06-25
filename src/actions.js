@@ -17,3 +17,14 @@ export function selectComputerOption(prevState) {
     computerOption: 'X',
   };
 }
+
+export function selectCell(index, prevState) {
+  const { grid, userOption } = prevState;
+
+  const newGrid = grid.slice();
+  newGrid[index] = userOption;
+
+  return {
+    grid: newGrid,
+  };
+}

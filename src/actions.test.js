@@ -1,6 +1,7 @@
 import {
   selectUserOption,
   selectComputerOption,
+  selectCell,
 } from './actions';
 
 describe('actions', () => {
@@ -31,6 +32,30 @@ describe('actions', () => {
       };
 
       expect(selectComputerOption(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('selectCell', () => {
+    it('marks the cell that has been selected by the user', () => {
+      const prevState = {
+        grid: [
+          null, null, null,
+          null, null, null,
+          null, null, null,
+        ],
+        userOption: 'X',
+      };
+
+      const newState = {
+        grid: [
+          'X', null, null,
+          null, null, null,
+          null, null, null,
+        ],
+
+      };
+
+      expect(selectCell(0, prevState)).toEqual(newState);
     });
   });
 });
