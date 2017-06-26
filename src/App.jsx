@@ -7,6 +7,9 @@ import {
   selectCell,
   computerSelectCell,
 } from './actions';
+import {
+  checkWinner,
+} from './utils';
 import './App.css';
 
 class App extends Component {
@@ -44,6 +47,16 @@ class App extends Component {
     setTimeout(() => {
       this.setState(computerSelectCell);
     }, 1000);
+  }
+
+  gameWinner() {
+    const { grid } = this.state;
+    const winner = checkWinner(grid);
+
+    if (winner != null) {
+      return `${winner} win!`;
+    }
+    return "It's a draw!";
   }
 
   render() {
