@@ -3,7 +3,6 @@ import Grid from './Grid';
 import Options from './Options';
 import {
   selectUserOption,
-  selectComputerOption,
   selectCell,
   computerSelectCell,
 } from './actions';
@@ -38,9 +37,6 @@ class App extends Component {
 
   handleClickSelectUserOption(option) {
     this.setState(selectUserOption.bind(null, option));
-    setTimeout(() => {
-      this.setState(selectComputerOption);
-    }, 1000);
   }
 
   handleOnClickCell(index) {
