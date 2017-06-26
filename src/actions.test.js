@@ -2,6 +2,7 @@ import {
   selectUserOption,
   selectComputerOption,
   selectCell,
+  computerSelectCell,
 } from './actions';
 
 describe('actions', () => {
@@ -52,10 +53,32 @@ describe('actions', () => {
           null, null, null,
           null, null, null,
         ],
-
       };
 
       expect(selectCell(0, prevState)).toEqual(newState);
+    });
+  });
+
+  describe('computerSelectCell', () => {
+    it('marks one available position of the grid', () => {
+      const prevState = {
+        grid: [
+          'X', 'O', 'O',
+          'O', 'X', 'X',
+          'O', 'O', null,
+        ],
+        computerOption: 'O',
+      };
+
+      const newState = {
+        grid: [
+          'X', 'O', 'O',
+          'O', 'X', 'X',
+          'O', 'O', 'O',
+        ],
+      };
+
+      expect(computerSelectCell(prevState)).toEqual(newState);
     });
   });
 });

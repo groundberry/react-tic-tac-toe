@@ -5,6 +5,7 @@ import {
   selectUserOption,
   selectComputerOption,
   selectCell,
+  computerSelectCell,
 } from './actions';
 import './App.css';
 
@@ -40,6 +41,9 @@ class App extends Component {
 
   handleOnClickCell(index) {
     this.setState(selectCell.bind(null, index));
+    setTimeout(() => {
+      this.setState(computerSelectCell);
+    }, 1000);
   }
 
   render() {
