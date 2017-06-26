@@ -3,6 +3,7 @@ import {
   selectComputerOption,
   selectCell,
   computerSelectCell,
+  setWinner,
 } from './actions';
 
 describe('actions', () => {
@@ -79,6 +80,25 @@ describe('actions', () => {
       };
 
       expect(computerSelectCell(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('setWinner', () => {
+    it('sets the current winner if any', () => {
+      const prevState = {
+        grid: [
+          'X', 'X', 'X',
+          null, 'O', null,
+          null, null, 'O',
+        ],
+        winner: null,
+      };
+
+      const newState = {
+        winner: 'X',
+      };
+
+      expect(setWinner(prevState)).toEqual(newState);
     });
   });
 });

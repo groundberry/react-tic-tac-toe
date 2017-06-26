@@ -1,6 +1,7 @@
 import {
   getAvailablePositions,
   getRandomPosition,
+  checkWinner,
 } from './utils';
 
 export function selectUserOption(option) {
@@ -46,4 +47,16 @@ export function computerSelectCell(prevState) {
   return {
     grid: newGrid,
   };
+}
+
+export function setWinner(prevState) {
+  const { grid } = prevState;
+  const result = checkWinner(grid);
+
+  if (result != null) {
+    return {
+      winner: result,
+    };
+  }
+  return null;
 }

@@ -23,6 +23,7 @@ class App extends Component {
       ],
       userOption: null,
       computerOption: null,
+      winner: null,
     };
 
     this.handleClickSelectUserOption = this.handleClickSelectUserOption.bind(this);
