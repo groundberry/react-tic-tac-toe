@@ -1,5 +1,4 @@
 .Grid-game {
-  color: #d5ff80;
   display: grid;
   grid-template-columns: 60px 60px 60px;
 }

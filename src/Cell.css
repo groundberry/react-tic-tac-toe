@@ -1,8 +1,9 @@
 .Cell {
-  background-color: #222;
-  border: 2px solid #d5ff80;
+  background-color: #fbcbd1;
+  border: 2px solid #f994a0;
   box-sizing: border-box;
-  color: #d5ff80;
+  color: #f994a0;
+  cursor: pointer;
   height: 60px;
   display: flex;
   font-size: 1.25em;
