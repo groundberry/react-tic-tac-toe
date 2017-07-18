@@ -2,7 +2,6 @@ import {
   selectUserOption,
   selectCell,
   computerSelectCell,
-  setWinner,
 } from './actions';
 
 describe('actions', () => {
@@ -54,6 +53,7 @@ describe('actions', () => {
           'O', 'O', null,
         ],
         computerOption: 'O',
+        winner: null,
       };
 
       const newState = {
@@ -62,28 +62,33 @@ describe('actions', () => {
           'O', 'X', 'X',
           'O', 'O', 'O',
         ],
+        winner: 'O',
       };
 
       expect(computerSelectCell(prevState)).toEqual(newState);
     });
-  });
 
-  describe('setWinner', () => {
-    it('sets the current winner if any', () => {
+    it('changes the state of the winner if there is one', () => {
       const prevState = {
         grid: [
-          'X', 'X', 'X',
-          null, 'O', null,
-          null, null, 'O',
+          'X', 'O', 'O',
+          'O', 'X', 'X',
+          'O', 'O', null,
         ],
+        computerOption: 'O',
         winner: null,
       };
 
       const newState = {
-        winner: 'X',
+        grid: [
+          'X', 'O', 'O',
+          'O', 'X', 'X',
+          'O', 'O', 'O',
+        ],
+        winner: 'O',
       };
 
-      expect(setWinner(prevState)).toEqual(newState);
+      expect(computerSelectCell(prevState)).toEqual(newState);
     });
   });
 });

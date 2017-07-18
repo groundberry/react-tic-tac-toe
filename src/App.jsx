@@ -6,9 +6,6 @@ import {
   selectCell,
   computerSelectCell,
 } from './actions';
-import {
-  checkWinner,
-} from './utils';
 import './App.css';
 
 class App extends Component {
@@ -29,6 +26,8 @@ class App extends Component {
     this.chooseX = this.handleClickSelectUserOption.bind(this, 'X');
     this.chooseO = this.handleClickSelectUserOption.bind(this, 'O');
     this.handleOnClickCell = this.handleOnClickCell.bind(this);
+    this.gameWinner = this.gameWinner.bind(this);
+    this.renderWinner = this.renderWinner.bind(this);
   }
 
   hasChosen() {
@@ -40,6 +39,12 @@ class App extends Component {
   }
 
   handleOnClickCell(index) {
+    const { winner } = this.state;
+
+    if (winner != null) {
+      return;
+    }
+
     this.setState(selectCell.bind(null, index));
     setTimeout(() => {
       this.setState(computerSelectCell);
@@ -47,13 +52,21 @@ class App extends Component {
   }
 
   gameWinner() {
-    const { grid } = this.state;
-    const winner = checkWinner(grid);
+    const { winner } = this.state;
 
     if (winner != null) {
       return `${winner} win!`;
     }
     return "It's a draw!";
+  }
+
+  renderWinner() {
+    const { winner } = this.state;
+
+    if (winner != null) {
+      return this.gameWinner();
+    }
+    return '';
   }
 
   render() {
@@ -72,6 +85,7 @@ class App extends Component {
               onClickChooseO={this.chooseO}
             />
           }
+          {this.renderWinner()}
         </div>
       </div>
     );

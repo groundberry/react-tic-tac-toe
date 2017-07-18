@@ -15,7 +15,7 @@ class Cell extends Component {
 
   render() {
     return (
-      <button className="Cell" onClick={this.handleClick}>
+      <button className="Cell" disabled={this.props.value != null} onClick={this.handleClick}>
         <h2>{this.props.value}</h2>
       </button>
     );

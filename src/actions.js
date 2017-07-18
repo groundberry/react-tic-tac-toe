@@ -30,20 +30,10 @@ export function computerSelectCell(prevState) {
 
   const newGrid = grid.slice();
   newGrid[computerPosition] = computerOption;
+  const result = checkWinner(newGrid);
 
   return {
     grid: newGrid,
+    winner: result,
   };
-}
-
-export function setWinner(prevState) {
-  const { grid } = prevState;
-  const result = checkWinner(grid);
-
-  if (result != null) {
-    return {
-      winner: result,
-    };
-  }
-  return null;
 }
