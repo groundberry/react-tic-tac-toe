@@ -2,6 +2,7 @@ import {
   selectUserOption,
   selectCell,
   computerSelectCell,
+  startGame,
 } from './actions';
 
 describe('actions', () => {
@@ -89,6 +90,34 @@ describe('actions', () => {
       };
 
       expect(computerSelectCell(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('startGame', () => {
+    it('clears the grid to start a new game', () => {
+      const prevState = {
+        grid: [
+          'X', 'O', 'O',
+          'O', 'X', 'X',
+          'O', 'O', 'O',
+        ],
+        userOption: 'X',
+        computerOption: 'O',
+        winner: 'O',
+      };
+
+      const newState = {
+        grid: [
+          null, null, null,
+          null, null, null,
+          null, null, null,
+        ],
+        userOption: null,
+        computerOption: null,
+        winner: null,
+      };
+
+      expect(startGame(prevState)).toEqual(newState);
     });
   });
 });

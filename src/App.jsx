@@ -5,6 +5,7 @@ import {
   selectUserOption,
   selectCell,
   computerSelectCell,
+  startGame,
 } from './actions';
 import './App.css';
 
@@ -26,6 +27,7 @@ class App extends Component {
     this.chooseX = this.handleClickSelectUserOption.bind(this, 'X');
     this.chooseO = this.handleClickSelectUserOption.bind(this, 'O');
     this.handleOnClickCell = this.handleOnClickCell.bind(this);
+    this.handleClickStartGame = this.handleClickStartGame.bind(this);
     this.gameWinner = this.gameWinner.bind(this);
     this.renderWinner = this.renderWinner.bind(this);
   }
@@ -49,6 +51,10 @@ class App extends Component {
     setTimeout(() => {
       this.setState(computerSelectCell);
     }, 1000);
+  }
+
+  handleClickStartGame() {
+    this.setState(startGame.bind(this));
   }
 
   gameWinner() {
@@ -79,14 +85,16 @@ class App extends Component {
               player={this.state.userOption}
               onClickCell={this.handleOnClickCell}
               board={this.state.grid}
+              onClickStartGame={this.handleClickStartGame}
+              winner={this.renderWinner()}
             />
             : <Options
               onClickChooseX={this.chooseX}
               onClickChooseO={this.chooseO}
             />
           }
-          {this.renderWinner()}
         </div>
+
       </div>
     );
   }

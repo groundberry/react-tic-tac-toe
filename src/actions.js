@@ -37,3 +37,16 @@ export function computerSelectCell(prevState) {
     winner: result,
   };
 }
+
+export function startGame() {
+  return {
+    grid: [
+      null, null, null,
+      null, null, null,
+      null, null, null,
+    ],
+    userOption: null,
+    computerOption: null,
+    winner: null,
+  };
+}
