@@ -2,6 +2,7 @@ import {
   getAvailablePositions,
   getRandomPosition,
   checkWinner,
+  isGridFull,
 } from './utils';
 
 describe('utils', () => {
@@ -49,6 +50,26 @@ describe('utils', () => {
         'X', 'O', 'X',
       ];
       expect(checkWinner(grid)).toEqual(null);
+    });
+  });
+
+  describe('isGridFull', () => {
+    it('returns true if the grid is full', () => {
+      const grid = [
+        'O', 'X', 'X',
+        'X', 'O', 'O',
+        'X', 'O', 'X',
+      ];
+      expect(isGridFull(grid)).toBe(true);
+    });
+
+    it('returns false if there is any space available in the grid', () => {
+      const grid = [
+        'O', 'X', 'X',
+        'X', 'O', 'O',
+        'X', 'O', null,
+      ];
+      expect(isGridFull(grid)).toBe(false);
     });
   });
 });

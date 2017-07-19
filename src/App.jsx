@@ -29,7 +29,6 @@ class App extends Component {
     this.handleOnClickCell = this.handleOnClickCell.bind(this);
     this.handleClickStartGame = this.handleClickStartGame.bind(this);
     this.gameWinner = this.gameWinner.bind(this);
-    this.renderWinner = this.renderWinner.bind(this);
   }
 
   hasChosen() {
@@ -60,19 +59,14 @@ class App extends Component {
   gameWinner() {
     const { winner } = this.state;
 
+    if (winner === 'DRAW') {
+      return "It's a draw!";
+    }
+
     if (winner != null) {
       return `${winner} win!`;
     }
-    return "It's a draw!";
-  }
-
-  renderWinner() {
-    const { winner } = this.state;
-
-    if (winner != null) {
-      return this.gameWinner();
-    }
-    return '';
+    return null;
   }
 
   render() {
@@ -86,7 +80,7 @@ class App extends Component {
               onClickCell={this.handleOnClickCell}
               board={this.state.grid}
               onClickStartGame={this.handleClickStartGame}
-              winner={this.renderWinner()}
+              winner={this.gameWinner()}
             />
             : <Options
               onClickChooseX={this.chooseX}

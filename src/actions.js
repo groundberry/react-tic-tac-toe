@@ -2,6 +2,7 @@ import {
   getAvailablePositions,
   getRandomPosition,
   checkWinner,
+  isGridFull,
 } from './utils';
 
 export function selectUserOption(option) {
@@ -30,7 +31,15 @@ export function computerSelectCell(prevState) {
 
   const newGrid = grid.slice();
   newGrid[computerPosition] = computerOption;
+
   const result = checkWinner(newGrid);
+
+  if (isGridFull(newGrid) === true && result == null) {
+    return {
+      grid: newGrid,
+      winner: 'DRAW',
+    };
+  }
 
   return {
     grid: newGrid,
