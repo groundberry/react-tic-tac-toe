@@ -2,7 +2,9 @@
   "name": "react-tic-tac-toe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://groundberry.github.io/react-tic-tac-toe",
   "dependencies": {
+    "gh-pages": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
@@ -15,7 +17,7 @@
     "eslint-plugin-react": "^7.1.0",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
-    "react-scripts": "1.0.7",
+    "react-scripts": "1.0.10",
     "react-test-renderer": "^15.6.1",
     "stylelint": "^7.11.1",
     "stylelint-config-standard": "^16.0.0"
@@ -23,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && gh-pages -d build",
     "test:lint:js": "eslint --ext=js ==ext=jsx",
     "test:lint:css": "stylelint \"**/*.css\"",
     "test:unit": "react-scripts test --env=jsdom",
