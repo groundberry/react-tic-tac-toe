@@ -39,6 +39,11 @@ export function computerSelectCell(prevState) {
       grid: newGrid,
       winner: 'DRAW',
     };
+  } else if (isGridFull(newGrid) === false && result != null) {
+    return {
+      grid,
+      winner: result,
+    };
   }
 
   return {
